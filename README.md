@@ -1,12 +1,12 @@
-# Elementis — Awwwards Site of the Day Clone
+# Elementis
 
-A pixel-perfect frontend clone of the [Elementis](https://elementis.com) website, which was awarded **Site of the Day** on Awwwards. This project is a deep-dive into advanced web animation techniques, performant rendering patterns, and modern UI engineering with Next.js 15.
+A luxury wellness brand website built with Next.js 15 — focused on advanced web animation, performant rendering patterns, and modern UI engineering.
 
 ---
 
-## Preview
+## Overview
 
-> Elementis is a luxury wellness brand centered around "Wellness • Innovation • Nature • Community." This clone faithfully reproduces its visual design, animations, and interactions.
+Elementis is a premium wellness platform centered around **Wellness • Innovation • Nature • Community**. The site delivers a high-end digital experience through smooth scroll, immersive animations, and a carefully crafted component architecture.
 
 ---
 
@@ -29,7 +29,7 @@ A pixel-perfect frontend clone of the [Elementis](https://elementis.com) website
 ## Project Structure
 
 ```
-elementis-clone/
+elementis/
 ├── app/                        # Next.js App Router root
 │   ├── layout.tsx              # Root layout: fonts, Lenis, WindowSizeProvider
 │   ├── page.tsx                # Home page — composes all sections
@@ -98,22 +98,22 @@ elementis-clone/
 ## Key Features & Techniques
 
 ### Server / Client Component Split
-Every section follows Next.js best practices — static markup and SEO content live in `Server.tsx` files (zero JS shipped), while animations and interactivity are isolated in `index.tsx` (Client Components).
+Every section follows Next.js best practices — static markup and SEO content live in `Server.tsx` files (zero JS shipped to the client), while animations and interactivity are isolated in Client Components.
 
 ### Mask Text Animation
-Words and lines animate in with a clip/mask reveal using `MaskText` (server) and `MaskTextClient` (client). Driven by Framer Motion's `staggerChildren` with configurable delay.
+Words and lines animate in with a clip/mask reveal using `MaskText` (server) and `MaskTextClient` (client). Driven by Framer Motion's `staggerChildren` with configurable delay per section.
 
 ### Custom Cursor
-A fully custom cursor (`useCursor.ts`) tracks pointer position with smooth lerp interpolation. It detects element entry/exit and morphs accordingly. Hidden entirely on mobile (< 768px) and inside the Innovation section.
+A fully custom cursor (`useCursor.ts`) tracks pointer position with smooth lerp interpolation. It detects element entry/exit and morphs shape accordingly. Hidden entirely on mobile (< 768px) and inside the Innovation section.
 
 ### Smooth Scroll — Lenis
 Lenis replaces native scroll for buttery inertia. Wrapped in a React context so any component can subscribe to scroll events without extra dependencies.
 
 ### Parallax Container
-`ParallaxContainer` maps scroll position to a CSS transform offset. The implementation accounts for window size to prevent visual overflow at specific breakpoints (ongoing refinement tracked in `ISSUES.md`).
+`ParallaxContainer` maps scroll position to a CSS transform offset. The implementation accounts for window size to prevent visual overflow at specific breakpoints.
 
 ### Image Reveal on Scroll
-`useImageReveal.ts` animates images in using a clip-path or mask-image technique triggered by the Intersection Observer / scroll progress.
+`useImageReveal.ts` animates images in using a clip-path / mask-image technique triggered by scroll progress.
 
 ### Responsive Marquee
 `ResponsiveMarquee` accepts separate `mobile` and `desktop` animation configs (speed + max translate) so the infinite scroll text performs correctly across all screen sizes.
@@ -154,36 +154,16 @@ npm start
 
 ---
 
-## Known Issues & Roadmap
+## Roadmap
 
-See [`ISSUES.md`](./ISSUES.md) for the full task queue. Current items:
-
-- [ ] `ParallaxContainer` offset bug at 1200×800 viewport — algorithm needs dry-run debug
+- [ ] `ParallaxContainer` offset refinement at 1200×800 viewport
 - [ ] Core Web Vitals optimization pass
 - [ ] Form server action → Notion as database
-- [x] Cursor entry/exit animation bug — **Fixed**
-- [ ] NavBar opacity in Innovation section (Redux to prevent full re-render)
-
----
-
-## What I Learned
-
-- Architecting large Next.js 15 apps with strict Server/Client boundaries
-- Advanced Framer Motion patterns: `AnimatePresence`, stagger orchestration, and layout animations
-- Building a custom cursor system that handles async animation lifecycle (`safeToRemove`)
-- Lenis integration with React's rendering model
-- Tailwind CSS v4 with PostCSS and `@tailwindcss/postcss`
-- Responsive animation configs for marquee/parallax components
-
----
-
-## Inspiration
-
-Original site: [elementis.com](https://elementis.com) — Awwwards Site of the Day.  
-This project is purely educational — all design credit belongs to the Elementis team and their design agency.
+- [x] Cursor entry/exit animation — **Fixed**
+- [ ] NavBar opacity handling in Innovation section (Redux to prevent full re-render)
 
 ---
 
 ## License
 
-MIT — free to use for learning and portfolio purposes.
+MIT
